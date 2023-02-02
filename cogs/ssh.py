@@ -3,12 +3,19 @@ import paramiko
 import os
 from discord.ext import commands
 from discord import app_commands
+from dotenv import load_dotenv
+
+load_dotenv()
+IP = os.getenv("IP")
+USER = os.getenv("USER")
+PASS = os.getenv("PASS")
+PORT = os.getenv("PORT")
 
 class ssh(commands.Cog):
-    host = "89.89.171.81"
-    username = "root"
-    password = "pG230804"
-    port="10022"
+    host = IP
+    username = USER
+    password = PASS
+    port= PORT
     client = paramiko.client.SSHClient()
 
     def getDockerListFile(self):

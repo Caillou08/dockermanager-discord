@@ -1,9 +1,13 @@
 import discord, os, asyncio
 from discord import app_commands
 from discord.ext import commands
+from dotenv import load_dotenv
 
 intents=discord.Intents.all()
 intents.message_content=True 
+
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 class MyBot(commands.Bot):
 
@@ -21,4 +25,4 @@ class MyBot(commands.Bot):
 
 bot=MyBot(command_prefix="!", intents=intents, application_id="1067199646591631360")
 
-bot.run("MTA2NzE5OTY0NjU5MTYzMTM2MA.GQvhJ_.KxfzjgtfoTtcqaAmHTEc2parMVOeW6c12U8Z9k")  
+bot.run(TOKEN)
