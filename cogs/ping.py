@@ -1,6 +1,9 @@
 import discord
+import os
 from discord.ext import commands
 from discord import app_commands
+
+SERVER_ID = os.getenv("SERVER_ID")
 
 class ping(commands.Cog):
     def __init__(self, bot):
@@ -9,7 +12,7 @@ class ping(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("Ping cog loaded.")
-        await self.bot.tree.sync(guild=discord.Object(id=1064226985116704829))
+        await self.bot.tree.sync(guild=discord.Object(id=SERVER_ID))
         print("Ping cog synced.") 
 
     @app_commands.command(name="ping", description="Gives the instant ping of the bot")
@@ -21,4 +24,4 @@ class ping(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
 async def setup(bot):
-    await bot.add_cog(ping(bot), guilds=[discord.Object(id=1064226985116704829)])
+    await bot.add_cog(ping(bot), guilds=[discord.Object(id=SERVER_ID)])

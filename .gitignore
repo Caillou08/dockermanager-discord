@@ -1,4 +1,3 @@
 .idea/
 cogs/__pycache__/
-.env
-cogs/mc.py
+venv/
