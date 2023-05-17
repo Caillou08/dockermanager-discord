@@ -8,6 +8,7 @@ intents.message_content=True
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+ID = os.getenv("DISCORD_APP_ID")
 
 class MyBot(commands.Bot):
 
@@ -23,6 +24,6 @@ class MyBot(commands.Bot):
                 await self.load_extension(f"cogs.{filename[:-3]}")
                 self.commands_list.append(filename[:-3])
 
-bot=MyBot(command_prefix="!", intents=intents, application_id="1067199646591631360")
+bot=MyBot(command_prefix="!", intents=intents, application_id=ID)
 
 bot.run(TOKEN)
